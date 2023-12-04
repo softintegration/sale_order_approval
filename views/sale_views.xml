@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="view_order_form_inherited" model="ir.ui.view">
+            <field name="name">view.order.form.inherited</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_cancel']" position="before">
+                    <button name="action_approval_request" type="object" string="Request approval"
+                    attrs="{'invisible': ['|',('require_approval','!=',True),('state','!=','draft')]}" class="oe_highlight"/>
+                </xpath>
+
+                <!--<xpath expr="//field[@name='state']" position="replace">
+                    <field name="state" widget="statusbar" statusbar_visible="draft,sent" attrs="{'invisible':[('require_approval','=',True)]}"/>
+                    <field name="state_approval" widget="statusbar" statusbar_visible="draft,awaiting_approval,approved_quotation,sent" attrs="{'invisible':[('require_approval','!=',True)]}"/>
+                </xpath>-->
+                <xpath expr="//field[@name='partner_id']" position="before">
+                    <field name="require_approval" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="view_quotation_tree_inherited" model="ir.ui.view">
+            <field name="name">view.quotation.tree.inherited</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="decoration-warning">state in ['awaiting_approval']</attribute>
+                    <attribute name="decoration-success">state in ['approved_quotation']</attribute>
+                </xpath>
+                <xpath expr="//field[@name='state']" position="attributes">
+                    <attribute name="decoration-warning">state == 'awaiting_approval'</attribute>
+                    <attribute name="decoration-success">state == 'approved_quotation' or state == 'sale' or state == 'done'</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+</odoo>
