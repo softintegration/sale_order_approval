@@ -65,3 +65,11 @@ class SaleOrder(models.Model):
         if self.env.context.get('mark_so_as_sent'):
             self.filtered(lambda o: o.state == 'approved_quotation').with_context(tracking_disable=True).write({'state': 'sent'})
         return super(SaleOrder,self).message_post(**kwargs)
+
+    # FIXME : here we have overwritten the super method just to edit the warning message,there is not better approach?
+    @api.ondelete(at_uninstall=False)
+    def _unlink_except_draft_or_cancel(self):
+        for order in self:
+            if order.state not in ('draft', 'cancel'):
+                raise UserError(
+                    _('You can not delete a sent,awaiting Approval quotation or a confirmed sales order. You must first cancel it.'))

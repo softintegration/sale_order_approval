@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-05 08:48+0000\n"
-"PO-Revision-Date: 2023-12-05 08:48+0000\n"
+"POT-Creation-Date: 2023-12-05 10:13+0000\n"
+"PO-Revision-Date: 2023-12-05 10:13+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -162,3 +162,13 @@ msgstr "Status d'un ou plusieurs devis ne permet pas la demande d'approbation"
 #: model:ir.model.fields,field_description:sale_order_approval.field_sale_order__state
 msgid "Status"
 msgstr "État"
+
+#. module: sale_order_approval
+#: code:addons/sale_order_approval/models/sale_order.py:0
+#, python-format
+msgid ""
+"You can not delete a sent,awaiting Approval quotation or a confirmed sales "
+"order. You must first cancel it."
+msgstr ""
+"Vous ne pouvez pas supprimer un devis en attente d'approbation ou envoyé ou un bon de commande confirmé."
+" Vous devez l'annuler au préalable."

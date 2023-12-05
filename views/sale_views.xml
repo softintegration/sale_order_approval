@@ -24,11 +24,15 @@
                             attrs="{'invisible':['|',('state','!=','approved_quotation'),('require_approval','!=',True)]}"
                             class="btn-primary" data-hotkey="g"/>
                 </xpath>
-
-                <!--<xpath expr="//field[@name='state']" position="replace">
-                    <field name="state" widget="statusbar" statusbar_visible="draft,sent" attrs="{'invisible':[('require_approval','=',True)]}"/>
-                    <field name="state_approval" widget="statusbar" statusbar_visible="draft,awaiting_approval,approved_quotation,sent" attrs="{'invisible':[('require_approval','!=',True)]}"/>
-                </xpath>-->
+                <xpath expr="//button[@name='action_confirm'][1]" position="attributes">
+                    <attribute name="attrs">{'invisible': [('state', 'not in', ['sent','approved_quotation'])]}</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_confirm'][2]" position="attributes">
+                    <attribute name="attrs">{'invisible': ['|',('state', 'not in', ['draft']),('require_approval','=',True)]}</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_cancel']" position="attributes">
+                    <attribute name="attrs">{'invisible': ['|', ('state', 'not in', ['draft','awaiting_approval', 'sent','sale']), ('id', '=', False)]}</attribute>
+                </xpath>
                 <xpath expr="//field[@name='partner_id']" position="before">
                     <field name="require_approval" invisible="1"/>
                 </xpath>
