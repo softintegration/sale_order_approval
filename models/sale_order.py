@@ -6,6 +6,7 @@ from odoo.exceptions import ValidationError
 from odoo.tools import float_is_zero, float_compare, float_round
 
 APPROVAL_REQUEST_ACCEPTED_STATES = ('draft',)
+APPROVAL_ACCEPTED_STATES = ('awaiting_approval',)
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
@@ -45,3 +46,16 @@ class SaleOrder(models.Model):
     def _action_approval_request(self):
         self.write({'state':'awaiting_approval'})
 
+    def action_approval(self):
+        if not self._check_approval():
+            raise ValidationError(_("Some Quotation state doesn't allow the approval!"))
+        self._action_approval()
+
+    def _check_approval(self):
+        approval_accepted_states = tuple(set(self.mapped("state")).union(set(APPROVAL_ACCEPTED_STATES)))
+        if approval_accepted_states != APPROVAL_ACCEPTED_STATES:
+            return False
+        return True
+
+    def _action_approval(self):
+        self.write({'state':'approved_quotation'})

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-04 20:48+0000\n"
-"PO-Revision-Date: 2023-12-04 20:48+0000\n"
+"POT-Creation-Date: 2023-12-05 06:27+0000\n"
+"PO-Revision-Date: 2023-12-05 06:27+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -22,6 +22,11 @@ msgid ""
 "specific.\" aria-label=\"Values set here are company-specific.\" "
 "groups=\"base.group_multi_company\" role=\"img\"/>"
 msgstr ""
+
+#. module: sale_order_approval
+#: model_terms:ir.ui.view,arch_db:sale_order_approval.view_order_form_inherited
+msgid "Approve"
+msgstr "Approuver"
 
 #. module: sale_order_approval
 #: model:ir.model.fields.selection,name:sale_order_approval.selection__sale_order__state__approved_quotation
@@ -118,9 +123,7 @@ msgstr "Demander l'approbation"
 #. module: sale_order_approval
 #: model_terms:ir.ui.view,arch_db:sale_order_approval.res_config_settings_view_form_inherited
 msgid "Request managers to approve Quotation orders above a minimum amount"
-msgstr ""
-"Demander aux managers d'approuver les devis d'un montant minimum "
-"de"
+msgstr "Demander aux managers d'approuver les devis d'un montant minimum de"
 
 #. module: sale_order_approval
 #: model:ir.model.fields,field_description:sale_order_approval.field_sale_order__require_approval
@@ -132,6 +135,12 @@ msgstr ""
 #: model:ir.model.fields.selection,name:sale_order_approval.selection__sale_order__state__sale
 msgid "Sales Order"
 msgstr "Bon de commande"
+
+#. module: sale_order_approval
+#: code:addons/sale_order_approval/models/sale_order.py:0
+#, python-format
+msgid "Some Quotation state doesn't allow the approval!"
+msgstr "Status d'un ou plusieurs devis ne permet pas l'approbation"
 
 #. module: sale_order_approval
 #: code:addons/sale_order_approval/models/sale_order.py:0

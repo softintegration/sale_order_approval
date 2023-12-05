@@ -2,7 +2,7 @@
 
 {
     'name': 'Sale order approval',
-    'version': '1.0.0.1',
+    'version': '1.0.0.2',
     'author':'Soft-integration',
     'category': 'Sale',
     'summary': 'Sale order approval',

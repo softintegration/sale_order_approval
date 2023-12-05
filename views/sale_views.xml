@@ -9,6 +9,8 @@
                 <xpath expr="//button[@name='action_cancel']" position="before">
                     <button name="action_approval_request" type="object" string="Request approval"
                     attrs="{'invisible': ['|',('require_approval','!=',True),('state','!=','draft')]}" class="oe_highlight"/>
+                    <button name="action_approval" type="object" string="Approve"
+                    attrs="{'invisible': [('state','!=','awaiting_approval')]}" class="oe_highlight"/>
                 </xpath>
 
                 <!--<xpath expr="//field[@name='state']" position="replace">
