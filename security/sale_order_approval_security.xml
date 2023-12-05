@@ -3,8 +3,8 @@
 <data noupdate="0">
 
 
-    <record id="group_sale_order_archiving" model="res.groups">
-        <field name="name">Archive sale orders</field>
+    <record id="group_sale_order_approve" model="res.groups">
+        <field name="name">Approve sale orders</field>
         <field name="category_id" ref="base.module_category_hidden"/>
     </record>
 

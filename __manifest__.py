@@ -2,7 +2,7 @@
 
 {
     'name': 'Sale order approval',
-    'version': '1.0.0.2',
+    'version': '1.0.0.3',
     'author':'Soft-integration',
     'category': 'Sale',
     'summary': 'Sale order approval',
@@ -11,7 +11,7 @@
         'sale'
     ],
     'data': [
-        #'security/sale_order_approval_security.xml',
+        'security/sale_order_approval_security.xml',
         'views/sale_views.xml',
         'views/res_config_settings_views.xml'
     ],
