@@ -13,6 +13,17 @@
                     attrs="{'invisible': [('state','!=','awaiting_approval')]}" class="oe_highlight"
                     groups="sale_order_approval.group_sale_order_approve"/>
                 </xpath>
+                <xpath expr="//button[@name='action_quotation_send'][1]" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_quotation_send'][1]" position="after">
+                    <button name="action_quotation_send" string="Send by Email" type="object"
+                            attrs="{'invisible':['|',('state','!=','draft'),('require_approval','=',True)]}"
+                            class="btn-primary" data-hotkey="g"/>
+                    <button name="action_quotation_send" string="Send by Email" type="object"
+                            attrs="{'invisible':['|',('state','!=','approved_quotation'),('require_approval','!=',True)]}"
+                            class="btn-primary" data-hotkey="g"/>
+                </xpath>
 
                 <!--<xpath expr="//field[@name='state']" position="replace">
                     <field name="state" widget="statusbar" statusbar_visible="draft,sent" attrs="{'invisible':[('require_approval','=',True)]}"/>

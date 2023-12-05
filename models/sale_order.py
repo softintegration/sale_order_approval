@@ -59,3 +59,9 @@ class SaleOrder(models.Model):
 
     def _action_approval(self):
         self.write({'state':'approved_quotation'})
+
+    @api.returns('mail.message', lambda value: value.id)
+    def message_post(self, **kwargs):
+        if self.env.context.get('mark_so_as_sent'):
+            self.filtered(lambda o: o.state == 'approved_quotation').with_context(tracking_disable=True).write({'state': 'sent'})
+        return super(SaleOrder,self).message_post(**kwargs)
